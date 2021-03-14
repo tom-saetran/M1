@@ -415,8 +415,12 @@ const isItPrime = (input) => {
     if (input === 1)
         return undefined
 
-    if (input === 2)
+    if (input === 2 || input === 3)
         return true
+
+    if (input % 2 === 0) {
+        return false
+    }
 
     for (let i = 3; i < input - 1; i += 2) {
         if (input % i === 0)
