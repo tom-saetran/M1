@@ -1,0 +1,86 @@
+html {
+    font-family: sans-serif;
+    color: #333;
+}
+
+.landing {
+    max-width: 1000px;
+    margin: 10px auto;
+    padding: 5px 15px;
+    border: 4px dotted black;
+    border-radius: 20px;
+}
+
+.landing h1 {
+    text-align: center;
+    text-decoration-line: underline;
+}
+
+.landing .msg-board h2 {
+    text-align: center;
+}
+
+.landing table {
+    margin: 10px auto;
+    width: 90%;
+    border: 4px solid black;
+    border-collapse: collapse;
+}
+
+.landing table td, .landing table th {
+    border: 1px solid black;
+}
+
+.landing table th {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.landing table td {
+    height: 80px;
+}
+
+.landing table img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 50px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.msg-board, .footer{
+    border: 4px solid black;
+    margin: 10px 50px 10px 50px;
+}
+
+.msg-board textarea {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+}
+
+.msg-board button {
+    display: block;
+    padding: 5px;
+    margin: 10px auto;
+    width: 90%;
+}
+
+.footer p{
+    padding: 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
