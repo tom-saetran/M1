@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+ASSIGNMENT RULES
+- The solution must be pushed to the repository and be available for the tutors by the end of the day
+- You can ask for tutor's help
+- You can google / use StackOverflow BUT we suggest you to use just the material provided
+- To test the page, just open it with your default browser.
+
+ASSIGNMENT TOPIC
+You are building a task list site.
+The have a list of tasks and can, at any time, add a new one, delete one or sort the whole bunch of them
+-->
+<html lang="en">
+    <head>
+        <!-- EXERCISE 1:
+        Specify the title, the charset (UTF-8) and the viewport of the page.
+        -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            /* EXERCISE 2:  
+            Create a CSS class for the task list with a diverse background
+            Create a CSS class for the task list item with a border, a bold text and a bigger font size
+            Style every button of the page to be bigger
+            */
+
+            #myTaskList {
+                background-color: blue;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
+            #myTaskList li {
+                background-color: aqua;
+                border: 1px solid black;
+                font-weight: 800;
+                font-size: large;
+            }
+
+            input[type=button] {
+                background-color: lightblue;
+                font-size: large;
+            }
+
+            input[type=text] {
+                background-color: lightcyan;
+                border: none;
+                font-size: large;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to your personal Task List!</h1>
+        <br/>
+        <span>You can add any task you like by writing it in the specified field and then press "Add new task"</span>
+        <br/>
+        <br/>
+
+        <input type="text" id="newTask" placeholder="Task Description"/>
+        <input type="button" value="Add New Task" onclick="addNewTask()"/>
+
+        <!-- EXERCISE 3
+        Create a button "Remove Last Task" to trigger the method "removeLast"
+        -->
+
+        <input type="button" value="Remove Last Entry" onclick="removeLast()"/>
+
+        <!-- EXERCISE 4
+        Create a button "Remove First Task" to trigger the method "removeFirst"
+        -->
+
+        <input type="button" value="Remove First Entry" onclick="removeFirst()"/>
+
+        <hr/>
+
+        <ul id="myTaskList">
+            <li>task placeholder 1</li>
+            <li>aask placeholder 2</li>
+            <li>task placeholder 3</li>
+            <li>Cask placeholder 4</li>
+        </ul>
+
+        <hr/>
+
+        <input type="color" placeholder="Color" id="colorPicker"/>
+        <br/>
+        <input type="button" value="Change Task Background" onclick="changeTaskBackgroundColor()"/>
+        <br/>
+        <input type="button" value="Change Task Item Background" onclick="changeTaskItemBackgroundColor()"/>
+        <br/>
+        <input type="button" value="Change Task Text Color" onclick="changeTaskColor()"/>
+
+        <hr/>
+
+        <input type="button" value="Sort" onclick="bubbleSort()"/>
+
+        <script>
+            /* EXERCISE 5: 
+            Add a new task to the list.
+            Suggestion:
+            - Use document.getElementById to get the UL item and the input text
+            - Use the document.createElement to create the new List Item
+            - Append the child to the UL
+            */
+           
+            const addNewTask = () => {
+                if (document.getElementById("newTask").value == "")
+                    return
+
+                document.getElementById("myTaskList").appendChild(
+                    document.createElement("li")).innerText = 
+                        document.getElementById("newTask").value
+                        
+                document.getElementById("newTask").value = ""
+            }
+
+            /* EXERCISE 6: 
+            Create a method "removeLast" which removes the last item from the task list
+            */
+
+            const removeLast = () => {
+                if (document.getElementById("myTaskList").children.length < 1)
+                    return
+
+                document.getElementById("myTaskList").lastElementChild.remove()
+            }
+
+            /* EXERCISE 7: 
+            Create a method "removeFirst" which removes the first item from the task list
+            */
+
+            const removeFirst = () => {
+                if (document.getElementById("myTaskList").children.length < 1)
+                    return
+
+                document.getElementById("myTaskList").firstElementChild.remove()
+            }
+
+            /* EXERCISE 8: 
+            Create a method "getTasksAsArray" which returns, and prints to the console an array containing the tasks as string
+            */
+
+            const getTasksAsArray = () => {
+                let taskArray = []
+
+                for (const child of document.getElementById("myTaskList").children) 
+                    taskArray.push(child.innerText)
+                return taskArray
+            }
+
+            /* EXERCISE 9:
+            Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
+            onchange event listener and applies it as background to every list item
+            */
+
+            const changeTaskBackgroundColor = () => {
+                document.getElementById("myTaskList").style.backgroundColor = document.getElementById("colorPicker").value
+            }
+
+            const changeTaskItemBackgroundColor = () => {
+                for (const item of document.getElementById("myTaskList").children) {
+                    item.style.backgroundColor = document.getElementById("colorPicker").value
+                }
+            }
+
+            const changeTaskColor = () => {
+                document.getElementById("myTaskList").style.color = document.getElementById("colorPicker").value
+            }
+
+            /* EXTRA */
+
+            /* EXERCISE 10: 
+            Create a method "bubbleSort()" which sort the task list alphabetically using the bubble sort algorithm
+
+            Use your spare time to beautify your task list via CSS.
+
+            Suggestion:
+            - Break the code into many function for semplicity 
+            - Reuse the functions previously created
+            */
+
+            const bubbleSort = () => {
+                let taskArray = getTasksAsArray()
+                let checked;
+
+                do {
+                    checked = false;
+                    for (let i = 0; i < taskArray.length; i++) {
+                        if (taskArray[i] > taskArray[i + 1]) {  // .toLowerCase doesnt work D:
+                            let tmp = taskArray[i];
+                            taskArray[i] = taskArray[i + 1];
+                            taskArray[i + 1] = tmp;
+                            checked = true;
+                        }
+                    }
+                } while (checked);
+
+                let taskList = document.getElementById("myTaskList").children
+                for (let i = 0; i < taskArray.length; i++) {
+                    taskList[i].innerText = taskArray[i]
+                }  
+            }
+        </script>
+    </body>
+</html>
