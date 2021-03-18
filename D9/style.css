@@ -1,0 +1,52 @@
+body {
+    margin: 0 auto;
+    padding-top: 20px;
+    background-color: lightgray;
+}
+
+.outer {
+    width: 750px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#bingoboard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+    height: 95%;
+    margin: 0 auto;
+}
+
+.cell {
+    position: relative;
+    height: 20%;
+    width: 6.4%;
+    border: 1px dotted black;
+    padding: 0;
+    text-align: center;
+    font-size: 36px;
+    margin: auto;
+}
+
+.drawn {
+    background-color: lightgreen;
+}
+
+input {
+    display: block;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 12px;
+    background-color: lightgrey;
+}
+
+input:hover {
+    background-color: lightskyblue;
+}
+
+input:active {
+    background-color: lightsalmon;
+}
