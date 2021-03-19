@@ -18,7 +18,7 @@ const drawNumber = () => {
 
     let x = Math.floor(Math.random() * numberArray.length)
     document.getElementById("bingoboard").children[numberArray[x]].classList.add("drawn")
-    numberArray.splice(x,1)
+    numberArray.splice(x, 1)
 }
 
 window.onload = () => {

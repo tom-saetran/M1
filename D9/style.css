@@ -14,14 +14,14 @@ body {
 #bingoboard {
     display: flex;
     flex-wrap: wrap;
-    width: 99%;
-    height: 95%;
+    width: 100%;
+    height: 98%;
     margin: 0 auto;
 }
 
 .cell {
     position: relative;
-    height: 20%;
+    height: 19%;
     width: 6.4%;
     border: 1px dotted black;
     padding: 0;
